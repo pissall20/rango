@@ -18,6 +18,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Template Files directory
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
+# Static Files directory
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+#Media Files directory
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+#Media to be served via media_url
+MEDIA_URL = '/media/'
+MEDIA_ROOT = MEDIA_DIR
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -55,6 +65,9 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'tangodjango.urls'
 
+#Static files directories
+STATICFILES_DIRS = [STATIC_DIR, MEDIA_DIR,]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -66,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },

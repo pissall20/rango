@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +11,7 @@
     <div>
         Hey there bro <br />
         <strong>{{ boldmessage }}</strong><br />
+        <img src="{% static 'images/rango.jpg' %}" alt="Rango picture" />
     </div>
 
     <div>
