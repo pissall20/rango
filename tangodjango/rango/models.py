@@ -20,6 +20,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+
 class Page(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=150)

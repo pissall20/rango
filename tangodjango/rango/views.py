@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rango.models import Category, Page
-from rango.forms import CategoryForm
+from rango.forms import CategoryForm, PageForm
 
 
 def index(request):
@@ -21,6 +21,7 @@ def show_category(request, category_name_slug):
         pages = Page.objects.filter(category=category)
         context_dict['pages'] = pages
         context_dict['category'] = category
+        context_dict['url'] = category_name_slug
     except Category.DoesNotExist:
         context_dict['pages'] = None
         context_dict['category'] = None
@@ -39,3 +40,20 @@ def add_category(request):
             print(form.errors)
 
     return render(request, 'rango/add_category.html', {'form': form})
+
+def add_page(request, category_name_slug):
+    form = PageForm()
+    category_name = category_name_slug.replace('-', ' ').title()
+    if request.method == "POST":
+        form = PageForm(request.POST)
+        if form.is_valid():
+            page = form.save(commit=False)
+            cat = Category.objects.get(name=category_name)
+            page.category = cat
+            page.views = 0
+            return index(request)
+        else:
+            print(form.errors)
+    return render(request, 'rango/add_page', {'url':category_name_slug, 'category_name': category_name,'form':form})
+
+
