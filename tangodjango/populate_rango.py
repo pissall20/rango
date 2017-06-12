@@ -7,33 +7,28 @@ django.setup()
 from rango.models import Category, Page
 
 def populate():
-    python_pages = [
-        {"title": "Official Python Tutorial",
-         "url": "http://docs.python.org/2/tutorial/"},
-        {"title": "How to Think like a Computer Scientist",
-         "url": "http://www.greenteapress.com/thinkpython/"},
-        {"title": "Learn Python in 10 Minutes",
-         "url": "http://www.korokithakis.net/tutorials/python/"}]
-    django_pages = [
-        {"title": "Official Django Tutorial",
-         "url": "https://docs.djangoproject.com/en/1.9/intro/tutorial01/"},
-        {"title": "Django Rocks",
-         "url": "http://www.djangorocks.com/"},
-        {"title": "How to Tango with Django",
-         "url": "http://www.tangowithdjango.com/"}]
-    other_pages = [
-        {"title": "Bottle",
-         "url": "http://bottlepy.org/docs/dev/"},
-        {"title": "Flask",
-         "url": "http://flask.pocoo.org"}]
-    cats = {"Python": {"pages": python_pages},
-            "Django": {"pages": django_pages},
-            "Other Frameworks": {"pages": other_pages}}
+    python_cat = add_cat('Python', views=128,likes=64)
+    django_cat = add_cat('Django', views=64, likes=32)
+    other_cat = add_cat('Other Frameworks', views=32, likes=16)
+    social_cat = add_cat('Social Media', views=127, likes=63)
 
-    for cat, cat_data in cats.items():
-        c = add_cat(cat)
-        for p in cat_data["pages"]:
-            add_page(c, p["title"], p["url"])
+    add_page(cat=python_cat, title="Official Python Tutorial", url="http://docs.python.org/2/tutorial/", views=12)
+    add_page(cat=python_cat, title="How to Think like a Computer Scientist", url="http://www.greenteapress.com/thinkpython/", views=23)
+    add_page(cat=python_cat, title="Learn Python in 10 Minutes", url="http://www.korokithakis.net/tutorials/python/", views=123)
+
+    add_page(cat=django_cat, title="Official Django Tutorial", url="https://docs.djangoproject.com/en/1.9/intro/tutorial01/", views=34)
+    add_page(cat=django_cat, title="Django Rocks", url="http://www.djangorocks.com/", views=234)
+    add_page(cat=django_cat, title="How to Tango with Django", url="http://www.tangowithdjango.com/", views=67)
+
+    add_page(cat=other_cat, title="Bottle", url="http://bottlepy.org/docs/dev/", views=34)
+    add_page(cat=other_cat, title="Flask", url="http://flask.pocoo.org", views=67)
+
+    add_page(cat=social_cat, title="Twitter", url="https://www.twitter.com", views=234)
+    add_page(cat=social_cat, title="LinkedIn", url="https://www.linkedin.com", views=56)
+
+
+
+
     # Print out the categories we have added.
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
@@ -45,8 +40,9 @@ def add_page(cat, title, url, views=0):
     p.views=views
     p.save()
     return p
-def add_cat(name):
-    c = Category.objects.get_or_create(name=name)[0]
+
+def add_cat(name, views, likes):
+    c = Category.objects.get_or_create(name=name, views=views,likes=likes)[0]
     c.save()
     return c
 # Start execution here!
