@@ -12,7 +12,7 @@
         <a href="/rango">Return to homepage</a>
     {% else %}
         Rango Says: <strong>Register Here</strong><br>
-        <form id="user_form" method="POST" action="/rango/register/" enctype="multipart/form-data">
+        <form id="user_form" method="POST" action="{% url 'register' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
