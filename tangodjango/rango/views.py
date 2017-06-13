@@ -43,19 +43,22 @@ def add_category(request):
 
 
 def add_page(request, category_name_slug):
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+    except Category.DoesNotExist:
+        category = None
     form = PageForm()
-    category_name = category_name_slug.replace('-', ' ').title()
     if request.method == "POST":
         form = PageForm(request.POST)
         if form.is_valid():
             page = form.save(commit=False)
-            cat = Category.objects.get(slug=category_name_slug)
-            page.category = cat
+            page.category = category
             page.views = 0
-            return index(request)
+            page.save()
+            return show_category(request, category_name_slug)
         else:
             print(form.errors)
-    else:
-        form = PageForm()
-    return render(request, 'rango/add_page.html', {'category_name_slug':category_name_slug, 'category_name': category_name, 'form': form})
+    context_dict = {'form': form, 'category': category, 'category_name_slug':category_name_slug}
+
+    return render(request, 'rango/add_page.html', context=context_dict)
 
