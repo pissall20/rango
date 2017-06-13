@@ -4,6 +4,7 @@ from rango.forms import CategoryForm, PageForm
 from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
@@ -110,3 +111,12 @@ def user_login(request):
             print("Invalid login details: {0}, {1}".format(username, password))
     else:
         return render(request, 'rango/login.html', {})
+
+@login_required
+def restricted(request):
+    return HttpResponse("Please log in if you see this message")
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('/rango/')
