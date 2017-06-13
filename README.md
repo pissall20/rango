@@ -1,7 +1,9 @@
 # rango
 Creating the Rango web app with Django
 
-You can clone this repository and run these scripts from the directory where manage.py exists.
+This is a web application created using the python Django framework. 
+
+You can clone this repository and run these scripts from the directory where manage.py exists. <br />
 
 python manage.py makemigrations <br />
 python manage.py migrate <br />
