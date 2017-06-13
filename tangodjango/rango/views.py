@@ -5,16 +5,33 @@ from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     most_viewed_pages = Page.objects.order_by('-views')[:5]
     context_dict = {'categories': category_list, 'most_viewed': most_viewed_pages}
+    if request.session.get('last_visit'):
+        last_visit_time = request.session.get('last_visit')
+        visits = request.session.get('visits', 0)
+        if (datetime.now() - datetime.strptime(last_visit_time[:-7], '%Y-%m-%d %H:%M:%S')).days > 0:
+            request.session['visits'] = visits + 1
+            request.session['last_visit'] = str(datetime.now())
+    else:
+        request.session['last_visit'] = str(datetime.now())
+        request.session['visits'] = 1
     return render(request, "rango/index.html", context=context_dict)
 
 
+
+
 def about(request):
-    return render(request, 'rango/about.html')
+    if request.session.get('visits'):
+        visits = request.session['visits']
+    else:
+        visits = 0
+    context_dict = {'visits': visits}
+    return render(request, 'rango/about.html', context_dict)
 
 
 def show_category(request, category_name_slug):
