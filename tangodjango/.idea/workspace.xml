@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="304573a2-36c7-4e99-bd21-03b9cd0348c2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rango/templates/rango/index.html" afterPath="$PROJECT_DIR$/rango/templates/rango/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rango/templates/rango/register.html" afterPath="$PROJECT_DIR$/rango/templates/rango/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rango/urls.py" afterPath="$PROJECT_DIR$/rango/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rango/views.py" afterPath="$PROJECT_DIR$/rango/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1189,7 +1184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497338776631</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Registration and login module now added.">
+      <created>1497345080539</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1497345080539</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1267,7 +1269,8 @@
     <MESSAGE value="Everything is working except for adding pages. Will fix in next update." />
     <MESSAGE value="Pages can be added. Fully working website. Will do user authentication next." />
     <MESSAGE value="Created the functionality for users to register(with profile pictures too)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the functionality for users to register(with profile pictures too)" />
+    <MESSAGE value="Registration and login module now added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration and login module now added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
