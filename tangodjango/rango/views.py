@@ -126,6 +126,8 @@ def user_login(request):
                 HttpResponse("Your account was disabled")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
+            context_dict = {'bad_details': True}
+            return render(request, 'rango/login.html', context_dict)
     else:
         return render(request, 'rango/login.html', {})
 

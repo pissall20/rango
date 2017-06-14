@@ -43,8 +43,8 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    website = forms.URLField(help_text="Please enter a valid URL with http:// prefix")
-    picture = forms.ImageField(help_text="Select a profile image to upload")
+    website = forms.URLField(help_text="Please enter a valid URL with http:// prefix", required=False)
+    picture = forms.ImageField(help_text="Select a profile image to upload", required=False)
     class Meta:
         model = UserProfile
         fields = ('website', 'picture')
