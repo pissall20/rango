@@ -3,15 +3,17 @@
 
 {% block title %} Index {% endblock %}
 {% block body_block %}
-
+<div class="hero-unit">
     {% if user.is_authenticated %}
     <h1>Rango Says...hello {{user.username}}!</h1>
     {% else %}
     <h1>Rango Says...hello world</h1>
     {% endif %}
-    <div>
-        <div>
-            <h1>Most Liked Categories</h1>
+</div>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <h2>Most Liked Categories</h2>
         {% if categories %}
         <ul>
             {% for category in categories %}
@@ -22,12 +24,12 @@
             <strong>There are no categories present</strong>
         {% endif %}
         </div>
-        <div>
+        <div class="span6">
             <h2>Most Viewed Pages</h2>
             {% if most_viewed %}
             <ul>
                 {% for page in most_viewed %}
-                <li><a href="{{page.url}}">{{page.title}}</a></li>
+                <li><a href="{{page.url}}">{{page.title}}</a> - {{page.category}} ({{page.views}} views)</li>
                 {% endfor %}
             </ul>
             {% else %}
@@ -35,9 +37,8 @@
             {% endif %}
         </div>
     </div>
-    <br />
-    <div>
 
+    <div>
         <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
     </div>
 {% endblock %}

@@ -2,11 +2,11 @@
 {% block title %} Add new page {% endblock %}
 
 {% block body_block %}
-
+<div class="hero-unit">
     {% if category %}
     <h1>Add new page to {{category.name}}</h1>
-<div>
-    <form id="page_form" method="post" action="{% url 'add_page' category.slug %}">
+    <div class="container">
+    <form id="page_form" class="span6" method="post" action="{% url 'add_page' category.slug %}">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
@@ -14,13 +14,14 @@
         {% for field in form.visible_fields %}
             {{ field.errors }}
             {{ field.help_text }}
-            <li>{{ field }}</li><br>
+            <ul><li>{{ field }}</li></ul>
         {% endfor %}
-        <input type="submit" name="submit" value="Add Page">
+        <input type="submit" class="btn btn-primary" name="submit" value="Add Page">
     </form>
     {% else %}
     <strong>The specified category does not exist</strong>
     {% endif %}
+</div>
 </div>
 
 {% endblock %}
