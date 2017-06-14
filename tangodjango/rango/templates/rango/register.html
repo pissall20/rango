@@ -13,12 +13,12 @@
             <h2 class="sign-in heading">Sign up here</h2>
             {% for field in user_form.visible_fields %}
             {{ field.errors }}
-            {{ field.help_text }}<br/>
+            <small>{{ field.help_text }}</small><br/>
             {{ field }} <br/>
             {% endfor %}
             {% for field in profile_form.visible_fields %}
             {{ field.errors }}
-            {{ field.help_text }} <br/>
+            <small> {{ field.help_text }} </small><br/>
             {{ field }} <br/>
             {% endfor %}
             <br>
