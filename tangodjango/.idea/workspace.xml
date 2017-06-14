@@ -465,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497424164173</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added bootstrap and jquery. The look of the site is not ugly anymore.">
+      <created>1497424179697</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1497424179697</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
